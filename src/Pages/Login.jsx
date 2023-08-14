@@ -50,7 +50,7 @@ export default function Login() {
     <Box
       bgGradient="linear(to top, #fbc2eb 0%, #a6c1ee 100%)"
       w={"100%"}
-      h={'120vh'}
+      h={'100vh'}
       // mt={'2.5%'}
       // border={"1px solid blue"}
       // py={}
