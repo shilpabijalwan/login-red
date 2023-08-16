@@ -12,45 +12,60 @@ import {
   border,
   Stack,
   HStack,
-  Modal
+  Modal,
+  useToast,
 } from "@chakra-ui/react";
-import { Toast } from "../Components/Toast";
+import NavBar from "../Components/NavBar";
 export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
- 
+
+  const toast = useToast()
+
+  console.log(toast)
   const store = useSelector((data) => {
     return data.authReducer;
   });
   console.log(store);
-  const [toast,setToast]=useState()
 
   const handleSubmit = (e) => {
-   
     e.preventDefault();
     const userdata = {
       email,
       password,
     };
-    dispatch(LoginData(userdata));
-    setToast(store.isAuth)
+
+    dispatch(LoginData(userdata))
+    if (store.token!=="") {
+      toast({
+        description: "Login Successfully",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top-center",
+      });
+    } else 
+      toast({
+        description: "Login error",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-center",
+      });
     
 
-  setEmail("")
-  setPassword("")
+    setEmail("");
+    setPassword("");
+  };
 
-
-   
-  }
-  
- 
-  return  (
-  
+  return (
+    <>
+    <NavBar/>
     <Box
       bgGradient="linear(to top, #fbc2eb 0%, #a6c1ee 100%)"
       w={"100%"}
-      h={'100vh'}
+      h={"100vh"}
       // mt={'2.5%'}
       // border={"1px solid blue"}
       // py={}
@@ -62,30 +77,27 @@ export default function Login() {
         fontWeight="bold"
         textShadow="1px 1px #ff0000"
         color={"blue.700"}
-      
       >
         Login Page
       </Text>
 
-      <Box display={'flex'}
-      // bgGradient="linear(-20deg, #dcb0ed 0%, #99c99c 100%)"
-    
+      <Box
+        display={"flex"}
+        // bgGradient="linear(-20deg, #dcb0ed 0%, #99c99c 100%)"
 
-       m={'auto'}
+        m={"auto"}
         w={"70%"}
-        // mx={30} 
+        // mx={30}
         p={2}
         // border={"1px solid red"}/
         boxShadow="2xl"
-        
         rounded="md"
       >
         <Box
           // border={"1px solid green"}
           w={"45%"}
-          m={'auto'}
+          m={"auto"}
           h={"500px"}
-        
           // boxShadow="2xl"
           p="10"
           rounded="md"
@@ -99,13 +111,11 @@ export default function Login() {
           >
             Login to Abc
           </Text>
-          <form onSubmit={handleSubmit} 
-          
-          
-          >
+          <form onSubmit={handleSubmit}>
             <br />
             <br />
-            <Input required
+            <Input
+              required
               type="email"
               name="email"
               placeholder="email"
@@ -115,7 +125,8 @@ export default function Login() {
             />
             <br />
             <br />
-            <Input required
+            <Input
+              required
               type="password"
               name="password"
               placeholder="password"
@@ -124,18 +135,16 @@ export default function Login() {
               value={password}
             />
             <br /> <br /> <br />
-            <Button 
+            <Button
               type="submit"
               px={20}
-             ml={10}
+              ml={10}
               background={"#BFA9C6"}
               color={"gray.600"}
-           
-            
             >
-              Login 
+              Login
             </Button>
-             {/* <Toast text={"Login"}/> */}
+            {/* <Toast text={"Login"}/> */}
           </form>
           <br />
           <br />
@@ -151,26 +160,24 @@ export default function Login() {
           </Text>
         </Box>
 
-        <Box 
-        w={"70%"}  
-        m={'auto'}
-        h={"500px"}
-        // border={'1px solid black'}
-        // boxShadow="2xl" rounded="md" p={3} h={"500px"}
+        <Box
+          w={"70%"}
+          m={"auto"}
+          h={"500px"}
+          // border={'1px solid black'}
+          // boxShadow="2xl" rounded="md" p={3} h={"500px"}
         >
-          <Image 
-           width={['100%']}
-           objectFit={'cover'}
-           mt={['6%']}
+          <Image
+            width={["100%"]}
+            objectFit={"cover"}
+            mt={["6%"]}
             src={
               "https://images.pexels.com/photos/7712474/pexels-photo-7712474.jpeg?cs=srgb&dl=pexels-maria-camila-casta%C3%B1o-7712474.jpg&fm=jpg"
             }
           />
         </Box>
       </Box>
-  
     </Box>
-    
-  
+    </>
   );
 }
