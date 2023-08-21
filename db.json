@@ -1,3 +1,58 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvTiABYZA7YABr9un0dxRTcDT1FyMJacNI0A&usqp=CAU",
+      "title": "shoe",
+      "price": 1229,
+      "brand": "nike",
+      "discount": "10",
+      "gender": "men",
+      "id": 1
+    },
+    {
+      "image": "https://i.pinimg.com/originals/68/01/a1/6801a10e101dde2f2d61dea4e742183f.jpg",
+      "title": "shoe",
+      "price": 1229,
+      "brand": "nike",
+      "discount": "10",
+      "gender": "men",
+      "id": 2
+    },
+    {
+      "image": "https://i.ebayimg.com/images/g/RqcAAOSwNxNjD~sq/s-l1600.jpg",
+      "title": "sports shoe",
+      "price": 1229,
+      "brand": "nike",
+      "discount": "30",
+      "gender": "men",
+      "id": 3
+    },
+    {
+      "image": "https://i.pinimg.com/550x/fe/5a/85/fe5a85dc5c91258a7bd5d20166035c76.jpg",
+      "title": "sports shoe",
+      "price": 1229,
+      "brand": "nike",
+      "discount": "20",
+      "gender": "men",
+      "id": 4
+    },
+    {
+      "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQjjidKQhNa-9akp2ij8-tCovqNExAuxJ8qwZxhDd0ry-ehEWYh",
+      "title": "shoe",
+      "price": 1200,
+      "brand": "Allen Soll",
+      "discount": "20",
+      "gender": "women",
+      "id": 5
+    },
+    {
+      "image": "https://images.meesho.com/images/products/62814662/cikrv_512.webp",
+      "title": "casual shoe",
+      "price": 5200,
+      "brand": "Allen Soll",
+      "discount": "20",
+      "gender": "kids",
+      "id": 6
+    }
+  ]
 }

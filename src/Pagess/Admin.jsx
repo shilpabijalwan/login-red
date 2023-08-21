@@ -12,7 +12,7 @@ const intialState = {
   discount: "",
   gender: "",
 };
-export default function Admin() { 
+export default function Admin() {
   const dispatch = useDispatch();
   const [product, setProduct] = useState(intialState);
   // console.log(product);
@@ -48,8 +48,9 @@ export default function Admin() {
   return (
     <>
       <NavBar />
-      <Box px={20}
-      //  border={'1px solid blue'} 
+      <Box
+        px={20}
+        //  border={'1px solid blue'}
       >
         <Text
           textAlign={"center"}
@@ -68,7 +69,6 @@ export default function Admin() {
             py={10}
             width={"500px"}
             m={"auto"}>
-              
             <Text
               textAlign={"center"}
               color={"cyan.600"}
@@ -114,7 +114,7 @@ export default function Admin() {
             />
 
             <Select
-              placeholder="Select Gender"
+              placeholder="Select Category"
               name="gender"
               onChange={(e) => handleChange(e)}
               value={product.gender}>
