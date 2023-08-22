@@ -32,7 +32,7 @@
       "title": "sports shoe",
       "price": 1229,
       "brand": "nike",
-      "discount": "20",
+      "discount":"20",
       "gender": "men",
       "id": 4
     },

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductCard } from "./ProductCard";
 import { Get_Product } from "../Pages/Redux/Productreducer/action";
 import { Box, Center, Grid, Text } from "@chakra-ui/react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams, Link } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
 
 export function ProductList() {

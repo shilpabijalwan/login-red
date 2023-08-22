@@ -1,17 +1,26 @@
-import { Box, Input, Stack, Checkbox, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Stack,
+  Checkbox,
+  Text,
+  Radio,
+  RadioGroup,
+  VStack,
+} from "@chakra-ui/react";
 import { color } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 import { useSearchParams } from "react-router-dom";
 export default function Sidebar() {
-  const [category, setCategory] = useState([]);
+  // const [sort, setSort] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.getAll("category");
+  const [category, setCategory] = useState(initialCategory || []);
 
   ///////////////////////////////////////
   //////////////////////////////////////
   const handlechecked = (e) => {
-    // const { name, checked } = e.target;
-    // console.log(name, checked);
     let newCategory = [...category];
     const value = e.target.value;
 
@@ -25,11 +34,16 @@ export default function Sidebar() {
     setCategory(newCategory);
     // console.log(category);
   };
+
+  const handleSort = (e) => {
+    // setSort(e.target.value);
+  };
   ///////////////////////////////////////////
   //////////////////////////////////////////////
   useEffect(() => {
     const params = {
       category,
+      // sort,
     };
     setSearchParams(params);
   }, [category]);
@@ -47,24 +61,42 @@ export default function Sidebar() {
         <Checkbox
           colorScheme="green"
           onChange={handlechecked}
-          name="men"
-          value={"men"}>
+          name="male"
+          value={"men"}
+          isChecked={category.includes("men")}>
           Men
         </Checkbox>
         <Checkbox
           colorScheme="green"
           onChange={handlechecked}
-          name="women"
-          value={"women"}>
+          name="female"
+          value={"women"}
+          isChecked={category.includes("women")}>
           Women
         </Checkbox>
         <Checkbox
           colorScheme="green"
           onChange={handlechecked}
           name="kids"
-          value={"kids"}>
+          value={"kids"}
+          isChecked={category.includes("kids")}>
           Kids
         </Checkbox>
+      </Stack>
+      <Text fontWeight={"bold"} color={"blue.700"} fontSize={20} mt={10}>
+        Sort by price
+      </Text>
+      <Stack mt={5}>
+        <RadioGroup>
+          <VStack spacing={5} direction="row">
+            <Radio colorScheme="green" value="asc" onChange={handleSort}>
+              Low to high
+            </Radio>
+            <Radio colorScheme="green" value="desc" onChange={handleSort}>
+              High to Low
+            </Radio>
+          </VStack>
+        </RadioGroup>
       </Stack>
     </Box>
   );

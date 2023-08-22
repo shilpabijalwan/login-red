@@ -16,17 +16,20 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import NavBar from "../Components/NavBar";
+import { useLocation, useNavigate } from "react-router-dom";
 export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-
+  const Navigate = useNavigate();
   const toast = useToast();
+  const location = useLocation();
+  //  console.log(location);
 
   const store = useSelector((data) => {
     return data.authReducer;
   });
-  console.log(store);
+  // console.log(store);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,26 +38,28 @@ export default function Login() {
       password,
     };
 
-    dispatch(LoginData(userdata));
-    if (store.token !== "") {
-      toast({
-        description: "Login Successfully",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-        position: "top-center",
-      });
-    } else
-      toast({
-        description: "Login error",
-        status: "error",
-        duration: 4000,
-        isClosable: true,
-        position: "top-center",
-      });
+    dispatch(LoginData(userdata)).then(() => {
+      Navigate(location.state);
+      if (store.isAuth === true) {
+        toast({
+          description: "Login Successfully",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+          position: "top-center",
+        });
+      } else
+        toast({
+          description: "Login error",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+          position: "top-center",
+        });
 
-    setEmail("");
-    setPassword("");
+      setEmail("");
+      setPassword("");
+    });
   };
 
   return (
