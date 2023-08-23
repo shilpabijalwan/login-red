@@ -4,6 +4,7 @@ import {
   ADD_PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
   GET_PRODUCT_SUCCESS,
+  PATCH_PRODUCT_SUCCESS,
   PRODUCT_FAILTURE,
   PRODUCT_REQUEST,
 } from "./actionTypes";
@@ -33,13 +34,18 @@ export function reducer(state = iniState, { type, payload }) {
         isError: true,
       };
     }
-    case GET_PRODUCT_SUCCESS:{
+    case GET_PRODUCT_SUCCESS: {
       return {
         ...state,
-        isLoading:false,
-        products:payload
-        
-      }
+        isLoading: false,
+        products: payload,
+      };
+    }
+    case PATCH_PRODUCT_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+      };
     }
     default: {
       return {

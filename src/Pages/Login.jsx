@@ -31,7 +31,7 @@ export default function Login() {
     return data.authReducer;
   });
 
-  // console.log(store.status);
+  // console.log(store);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,33 +41,28 @@ export default function Login() {
     };
 
     dispatch(LoginData(userdata)).then(() => {
-      // store.isAuth && Navigate("/");
-      if (store.status) {
-        toast({
-          description: "Login Successful",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-          position: "top-center",
-        });
-      } else {
-        toast({
-          description: "Login error",
-          status: "error",
-          duration: 4000,
-          isClosable: true,
-          position: "top-center",
-        });
-      }
+      store.isAuth
+        ? toast({
+            description: "Login Successful",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+            position: "top-center",
+          })
+        : toast({
+            description: "Login error",
+            status: "error",
+            duration: 4000,
+            isClosable: true,
+            position: "top-center",
+          });
       setTimeout(() => {
         Navigate(location.state, { replace: true });
       }, 1000);
-
-      setEmail("");
-      setPassword("");
     });
+    setEmail("");
+    setPassword("");
   };
-
   return (
     <>
       <NavBar />

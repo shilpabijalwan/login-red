@@ -36,6 +36,12 @@ export const ProductCard = ({
       <Button onClick={() => handleCart(id)} ml={7} p={4}>
         Add to Cart
       </Button>
+      <br /> <br />
+      <Link to={`/edit/${id}`}>
+        <Button ml={7} p={4}>
+          Edit
+        </Button>
+      </Link>
     </Box>
   );
 };

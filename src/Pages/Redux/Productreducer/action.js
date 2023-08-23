@@ -4,6 +4,7 @@ import {
   PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
   GET_PRODUCT_SUCCESS,
+  PATCH_PRODUCT_SUCCESS,
 } from "./actionTypes";
 
 export const addProduct = (data) => (dispatch) => {
@@ -18,13 +19,25 @@ export const addProduct = (data) => (dispatch) => {
     });
 };
 
-export const Get_Product = (params)=>(dispatch) => {
-
+export const Get_Product = (params) => (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST });
   axios
-    .get("http://localhost:8080/posts",params)
+    .get("http://localhost:8080/posts", params)
     .then((res) => {
       dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
+      // console.log(res.data);
+    })
+    .catch((error) => {
+      dispatch({ type: PRODUCT_FAILTURE });
+    });
+};
+
+export const editProduct = (dataobj, id) => (dispatch) => {
+  dispatch({ type: PRODUCT_REQUEST });
+  return axios
+    .patch(`http://localhost:8080/posts/${id}`, dataobj)
+    .then((res) => {
+      dispatch({ type: PATCH_PRODUCT_SUCCESS, payload: res.data });
       // console.log(res.data);
     })
     .catch((error) => {

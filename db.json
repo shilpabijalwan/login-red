@@ -2,10 +2,10 @@
   "posts": [
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvTiABYZA7YABr9un0dxRTcDT1FyMJacNI0A&usqp=CAU",
-      "title": "shoe",
-      "price": 1223,
+      "title": "shoes-3",
+      "price": 699,
       "brand": "nike",
-      "discount": 10,
+      "discount": 5,
       "gender": "men",
       "id": 1
     },

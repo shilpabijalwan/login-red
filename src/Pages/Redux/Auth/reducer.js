@@ -27,6 +27,7 @@ export function reducer(state = intialState, { type, payload }) {
     case LOGIN_FAILTURE: {
       return {
         ...state,
+        isAuth: false,
         isLoading: false,
         isError: true,
       };

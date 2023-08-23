@@ -6,6 +6,7 @@ import Admin from "../Pagess/Admin";
 import Cart from "../Pagess/Cart";
 import PrivateRoute from "../Components/PrivateRoute";
 import ProductDetails from "../Pagess/SingleProductPage";
+import EditPage from "../Pagess/EditPage";
 
 export default function Router() {
   return (
@@ -26,6 +27,14 @@ export default function Router() {
         element={
           <PrivateRoute>
             <ProductDetails />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/edit/:id"
+        element={
+          <PrivateRoute>
+            <EditPage />
           </PrivateRoute>
         }
       />
