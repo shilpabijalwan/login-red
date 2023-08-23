@@ -19,6 +19,8 @@ export function ProductList() {
   const obj = {
     params: {
       gender: searchParams.getAll("category"),
+      _sort: searchParams.get("order") && "price",
+      _order: searchParams.get("order"),
     },
   };
   // console.log(location.search);

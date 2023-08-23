@@ -13,9 +13,10 @@ import React, { useEffect, useState } from "react";
 
 import { useSearchParams } from "react-router-dom";
 export default function Sidebar() {
-  // const [sort, setSort] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.getAll("category");
+  const intialOrder = searchParams.get("order");
+  const [order, setOrder] = useState(intialOrder || "");
   const [category, setCategory] = useState(initialCategory || []);
 
   ///////////////////////////////////////
@@ -36,17 +37,20 @@ export default function Sidebar() {
   };
 
   const handleSort = (e) => {
-    // setSort(e.target.value);
+    // console.log(e.target.value);
+    setOrder(e.target.value);
   };
   ///////////////////////////////////////////
-  //////////////////////////////////////////////
+  ///////////////////////////////////////////
   useEffect(() => {
     const params = {
       category,
       // sort,
     };
+    order && (params.order = order);
+
     setSearchParams(params);
-  }, [category]);
+  }, [category, order]);
   return (
     <Box
       // border={"1px solid blue"}
@@ -87,12 +91,23 @@ export default function Sidebar() {
         Sort by price
       </Text>
       <Stack mt={5}>
-        <RadioGroup>
+        <RadioGroup onChange={setOrder} value={order}>
           <VStack spacing={5} direction="row">
-            <Radio colorScheme="green" value="asc" onChange={handleSort}>
+            <Radio
+              colorScheme="green"
+              value="asc"
+              defaultChecked={order === "asc"}
+              name="order"
+              // onChange={handleSort}
+            >
               Low to high
             </Radio>
-            <Radio colorScheme="green" value="desc" onChange={handleSort}>
+            <Radio
+              colorScheme="green"
+              value="desc"
+              defaultChecked={order === "desc"}
+              // onChange={handleSort}
+              name="order">
               High to Low
             </Radio>
           </VStack>

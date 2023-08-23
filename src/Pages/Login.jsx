@@ -20,16 +20,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const Navigate = useNavigate();
   const toast = useToast();
   const location = useLocation();
+
   //  console.log(location);
 
   const store = useSelector((data) => {
     return data.authReducer;
   });
-  // console.log(store);
+
+  // console.log(store.status);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,16 +41,16 @@ export default function Login() {
     };
 
     dispatch(LoginData(userdata)).then(() => {
-      Navigate(location.state);
-      if (store.isAuth === true) {
+      // store.isAuth && Navigate("/");
+      if (store.status) {
         toast({
-          description: "Login Successfully",
+          description: "Login Successful",
           status: "success",
           duration: 4000,
           isClosable: true,
           position: "top-center",
         });
-      } else
+      } else {
         toast({
           description: "Login error",
           status: "error",
@@ -56,6 +58,10 @@ export default function Login() {
           isClosable: true,
           position: "top-center",
         });
+      }
+      setTimeout(() => {
+        Navigate(location.state, { replace: true });
+      }, 1000);
 
       setEmail("");
       setPassword("");

@@ -5,7 +5,7 @@ import Login from "../Pages/Login";
 
 export default function PrivateRoute({ children }) {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const { isAuth } = useSelector((data) => {
     return data.authReducer;
   });
@@ -13,6 +13,6 @@ export default function PrivateRoute({ children }) {
   return isAuth ? (
     children
   ) : (
-    <Navigate to={"/login"} state={location.pathname} />
+    <Navigate to={"/login"} state={location.pathname} replace />
   );
 }

@@ -106,7 +106,7 @@ export default function Admin() {
               onChange={(e) => handleChange(e)}
             />
             <Input
-              type="text"
+              type="number"
               name="discount"
               value={product.discount}
               placeholder="Discount"
