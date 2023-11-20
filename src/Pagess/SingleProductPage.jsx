@@ -14,8 +14,6 @@ import { useParams } from "react-router-dom";
 export default function ProductDetails() {
   const { id } = useParams();
 
-  //   console.log(id);
-
   const [data, setData] = useState({});
   const fetchdata = () => {
     axios.get(`http://localhost:8080/posts/${id}`).then((data) => {

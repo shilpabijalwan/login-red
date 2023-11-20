@@ -40,9 +40,8 @@ export default function Login() {
       password,
     };
 
-    dispatch(LoginData(userdata)).then(() => {
-      store.isAuth
-        ? toast({
+    dispatch(LoginData(userdata)).then((res) => {
+      res? toast({
             description: "Login Successful",
             status: "success",
             duration: 4000,

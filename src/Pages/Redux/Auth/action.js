@@ -7,7 +7,9 @@ export const LoginData = (userdata) => (dispatch) => {
     .post("https://reqres.in/api/login", userdata)
     .then((res) => {
       // console.log(res);
+
       dispatch({ type: LOGIN_SUCCESS, payload: res });
+      return true;
     })
     .catch((err) => {
       dispatch({ type: LOGIN_FAILTURE });

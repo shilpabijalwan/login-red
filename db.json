@@ -2,7 +2,7 @@
   "posts": [
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvTiABYZA7YABr9un0dxRTcDT1FyMJacNI0A&usqp=CAU",
-      "title": "shoes-3",
+      "title": "shoes-8",
       "price": 699,
       "brand": "nike",
       "discount": 5,
@@ -21,7 +21,7 @@
     {
       "image": "https://i.ebayimg.com/images/g/RqcAAOSwNxNjD~sq/s-l1600.jpg",
       "title": "sports shoe",
-      "price": 1119,
+      "price": 1100,
       "brand": "nike",
       "discount": 30,
       "gender": "men",
